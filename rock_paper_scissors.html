@@ -7,8 +7,6 @@
   
   <link rel="icon" href="images/icons.png" type="image/png">
   <link rel="stylesheet" href="style.css" type="text/css">
-
-  <script src="script.js"></script>
 </head>
 <body>
 
@@ -42,19 +40,32 @@
   <p class="js-move"></p>
   <p class="js-score"></p>
 
-  <button
-    onclick = "
-      score.win = 0,
-      score.lose = 0,
-      score.tie = 0
-      localStorage.removeItem('score');
-      updateScoreElement();
-    ">
-      Reset Score
-  </button>
+  <div class="btn-card">
+    <button
+      onclick = "
+        resetGame();
+      ">
+        Reset Score
+    </button>
+    
+    <button class="js-autoPlay"
+      onclick = "
+        autoPlay();
+        resetGame();
+        ">
+        Auto Play
+      </button>
 
-  
+    <button
+      onclick = "
+        autoPlay();
+      ">
 
-  
+        Pause auto play
+    </button>
+  </div>
+
+  <script src="script.js"></script>
+    
 </body>
 </html>

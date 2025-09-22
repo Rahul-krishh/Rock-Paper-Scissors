@@ -1,14 +1,21 @@
 let score = JSON.parse(localStorage.getItem('score')) || {
       win : 0,
       lose : 0,
-      tie : 0
+      tie : 0,
 }
 
-updateScoreElement();    
+let lastResult = localStorage.getItem('lastResult') || '';
+let lastMove = localStorage.getItem('lastMove') || '';
+
+updateScoreElement();
+
+document.querySelector('.js-result').innerHTML = lastResult;
+document.querySelector('.js-move').innerHTML = lastMove;
 
 function playGame(playerMove)
 {
   const computerPick = pickComputerMove();
+  let result;
 
   if(playerMove === 'Rock')
   {
@@ -72,13 +79,16 @@ function playGame(playerMove)
   }
   
 
-  document.querySelector('.js-result').innerHTML = `${result}`;
-  
-  document.querySelector('.js-move').innerHTML = `You picked ${playerMove}&nbsp; <img class="move-result-icon" src="../rock_paper_scissors/images/${playerMove}-emoji.png"> &nbsp;&nbsp;  Computer Picked ${computerPick} &nbsp;<img class="move-result-icon" src="../rock_paper_scissors/images/${computerPick}-emoji.png">`;
+  lastResult = result;
+  lastMove = `You picked ${playerMove}&nbsp; <img class="move-result-icon" src="../rock_paper_scissors/images/${playerMove}-emoji.png"> &nbsp;&nbsp;  Computer Picked ${computerPick} &nbsp;<img class="move-result-icon" src="../rock_paper_scissors/images/${computerPick}-emoji.png">`;
 
+  document.querySelector('.js-result').innerHTML = lastResult;
+  document.querySelector('.js-move').innerHTML = lastMove;
   updateScoreElement();
   
   localStorage.setItem('score', JSON.stringify(score));
+  localStorage.setItem('lastResult', lastResult);
+  localStorage.setItem('lastMove', lastMove);
   
 }
 
@@ -104,9 +114,53 @@ function pickComputerMove()
   return computerPick;
 }
 
+let isAutoPlay = false;
+let intervalID;
+let autoPlayElement = document.querySelector('.js-autoPlay');
+
+function autoPlay() {
+
+  
+  if(!isAutoPlay) {
+    
+    function auto() {
+      const computerMove = pickComputerMove();
+      playGame(computerMove);
+    }
+    intervalID = setInterval(auto, 1200);
+    isAutoPlay = true;
+    autoPlayElement.innerHTML = "Restart Auto Play"
+
+    } else {
+      pauseAutoPlay(intervalID);
+      isAutoPlay = false;
+    }
+
+}
+
+function pauseAutoPlay(ID) {
+  clearInterval(ID);
+  autoPlayElement.innerText = "Auto Play"
+}
+
 
 function updateScoreElement()
 {
   document.querySelector('.js-score').innerHTML = `Win : ${score.win} &nbsp;&nbsp; Lose : ${score.lose} &nbsp;&nbsp; Tie : ${score.tie}`;
 }
 
+function resetGame() {
+  score.win = 0,
+  score.lose = 0,
+  score.tie = 0
+  
+  localStorage.removeItem('score');
+  localStorage.removeItem('lastResult');
+  localStorage.removeItem('lastMove');
+  
+  updateScoreElement();
+  
+  document.querySelector('.js-result').innerHTML = '';
+  document.querySelector('.js-move').innerHTML = '';
+
+}
