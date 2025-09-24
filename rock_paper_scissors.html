@@ -13,25 +13,14 @@
   <p class="title-card">Rock Paper Scissors</p>
 
   <div>
-    <button
-      class="move-btn"
-      onclick = "
-        playGame('Rock');
-      ">
+          <!-- onclick = "playGame('Scissors'); replaced by eventListener-->
+    <button class="move-btn js-rock-btn">             
         <img class="move-icon" src="images/rock-emoji.png">
     </button>
-    <button
-      class="move-btn"
-      onclick = "
-        playGame('Paper');
-      ">
+    <button class="move-btn js-paper-btn">
         <img class="move-icon" src="images/paper-emoji.png">
     </button>
-    <button
-      class="move-btn"
-      onclick = "
-        playGame('Scissors');
-      ">
+    <button class="move-btn js-scissor-btn">
         <img class="move-icon" src="images/scissors-emoji.png">
     </button>
   </div>
@@ -41,26 +30,15 @@
   <p class="js-score"></p>
 
   <div class="btn-card">
-    <button
-      onclick = "
-        resetGame();
-      ">
+    <button class="js-reset-score">
         Reset Score
     </button>
     
-    <button class="js-autoPlay"
-      onclick = "
-        autoPlay();
-        resetGame();
-        ">
+    <button class="js-autoPlay">
         Auto Play
       </button>
 
-    <button
-      onclick = "
-        autoPlay();
-      ">
-
+    <button class="js-pause-auto-play-btn">
         Pause auto play
     </button>
   </div>

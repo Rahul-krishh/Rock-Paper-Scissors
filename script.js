@@ -1,3 +1,21 @@
+const rockElement = document.querySelector('.js-rock-btn');
+const paperElement = document.querySelector('.js-paper-btn');
+const scissorElement = document.querySelector('.js-scissor-btn');
+
+rockElement.addEventListener('click' , () => {
+  playGame('Rock');
+});
+
+paperElement.addEventListener('click' , () => {
+  playGame('Paper');
+});
+
+scissorElement.addEventListener('click' , () => {
+  playGame('Scissors');
+});
+
+                                                    // local storage
+
 let score = JSON.parse(localStorage.getItem('score')) || {
       win : 0,
       lose : 0,
@@ -12,8 +30,13 @@ updateScoreElement();
 document.querySelector('.js-result').innerHTML = lastResult;
 document.querySelector('.js-move').innerHTML = lastMove;
 
+
+
+
+
 function playGame(playerMove)
 {
+
   const computerPick = pickComputerMove();
   let result;
 
@@ -77,6 +100,7 @@ function playGame(playerMove)
   {
     score.tie ++;
   }
+
   
 
   lastResult = result;
@@ -91,7 +115,7 @@ function playGame(playerMove)
   localStorage.setItem('lastMove', lastMove);
   
 }
-
+                                                         // computer Move
 
 function pickComputerMove()
 {
@@ -114,27 +138,48 @@ function pickComputerMove()
   return computerPick;
 }
 
+                                                    // AutoPlay and Reset
+
 let isAutoPlay = false;
 let intervalID;
-let autoPlayElement = document.querySelector('.js-autoPlay');
+const resetGameElement = document.querySelector('.js-reset-score');
+const autoPlayElement = document.querySelector('.js-autoPlay');
+const pauseAutoPlayElement = document.querySelector('.js-pause-auto-play-btn');
+
+resetGameElement.addEventListener('click', () => {
+  resetGame();
+});
+
+autoPlayElement.addEventListener('click', () => {
+  autoPlay();
+  resetGame();
+});
+
+pauseAutoPlayElement.addEventListener('click', () => {
+  autoPlay();
+});
+
+
+
 
 function autoPlay() {
 
-  
   if(!isAutoPlay) {
     
     function auto() {
       const computerMove = pickComputerMove();
       playGame(computerMove);
     }
+    
     intervalID = setInterval(auto, 1200);
     isAutoPlay = true;
     autoPlayElement.innerHTML = "Restart Auto Play"
 
-    } else {
-      pauseAutoPlay(intervalID);
-      isAutoPlay = false;
-    }
+  } 
+  else {
+    pauseAutoPlay(intervalID);
+    isAutoPlay = false;
+  }
 
 }
 
