@@ -209,3 +209,15 @@ function resetGame() {
   document.querySelector('.js-move').innerHTML = '';
 
 }
+
+                                              // press keydown
+
+document.body.addEventListener( 'keydown' , (event) => {
+
+  if(event.key === 'r') playGame('Rock');
+  
+  if(event.key === 'p') playGame('Paper');
+
+  if(event.key === 's') playGame('Scissors');
+
+})                              
