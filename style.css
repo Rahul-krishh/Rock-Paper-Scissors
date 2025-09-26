@@ -2,12 +2,46 @@ body {
   background-color: rgb(0, 0, 0);
   font-family: Arial, Helvetica, sans-serif;
   color: white;
+  margin-top: 10%;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-box {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.hint-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.hint-card p {
+  margin: 0px;
+}
+
+.hint-icon {
+  width: 15px;
+  height: 15px;
+  padding: 5px;
+}
+
+.hint-text {
+  font-size: 12px;
+}
+
+.main-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10%;
-  
 }
+
 
 .move-btn {
   width: 100px;
@@ -26,9 +60,10 @@ body {
 .title-card {
   margin: 3%;
   font-size: 32px;
+  margin-bottom: 50px;
 }
 
-.js-result {
+.result-text {
   font-size: 22px;
   font-weight: 600;
 }
@@ -36,3 +71,37 @@ body {
 .move-result-icon {
   width: 25px;
 }
+
+.play-buttons {
+  cursor: pointer;
+}
+
+.hint-card {
+  position: relative;
+}
+
+.hints-shortcut-text-tooltip {
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  width: 200px;
+  font-size: 14px;
+  z-index: 1;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+.hints-shortcut-text-tooltip p {
+  margin-bottom: 5px;
+}
+
+.hints-shortcut-text-tooltip ul {
+  margin: 0px;
+  list-style: none;
+  padding: 0px;
+}
+
+.hint-card:hover .hints-shortcut-text-tooltip {
+  visibility: visible;
+}
+

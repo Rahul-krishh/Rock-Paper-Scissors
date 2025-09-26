@@ -210,6 +210,13 @@ function resetGame() {
 
 }
 
+window.addEventListenerALL('load', () => {
+  isAutoPlay = false;
+  autoPlayElement.innerText = "Auto Play";
+  clearInterval(intervalID);
+});
+
+
                                               // press keydown
 
 document.body.addEventListener( 'keydown' , (event) => {
@@ -219,5 +226,9 @@ document.body.addEventListener( 'keydown' , (event) => {
   if(event.key === 'p') playGame('Paper');
 
   if(event.key === 's') playGame('Scissors');
+  
+  if(event.key === 'a') autoPlay();
+  
+  if(event.key === 'Backspace') showConfirmation();
 
 })                              

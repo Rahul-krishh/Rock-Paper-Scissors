@@ -9,38 +9,56 @@
   <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
+  
+  <div class="flex-box">
+    <div class="hint-box">
+      <div class="hint-card">
+        <img class="hint-icon" src="images/hint.png" type="image/png">
+        <p class="hint-text">How to play</p>
+        <div class="hints-shortcut-text-tooltip">
+          <p>press the icon images or shortcut press key:</p>
+          <ul>
+            <li>r - Rock</li>
+            <li>p - Paper</li>
+            <li>s - Scissor</li>
+            <li>a - Autoplay</li>
+            <li>backspace - Reset Score</li>
+          </ul>
 
-  <p class="title-card">Rock Paper Scissors</p>
+        </div>
+      </div>
+    </div>
 
-  <div>
-          <!-- onclick = "playGame('Scissors'); replaced by eventListener-->
-    <button class="move-btn js-rock-btn">             
-        <img class="move-icon" src="images/rock-emoji.png">
-    </button>
-    <button class="move-btn js-paper-btn">
-        <img class="move-icon" src="images/paper-emoji.png">
-    </button>
-    <button class="move-btn js-scissor-btn">
-        <img class="move-icon" src="images/scissors-emoji.png">
-    </button>
-  </div>
-
-  <p class="js-result"></p>
-  <p class="js-move"></p>
-  <p class="js-score"></p>
-
-  <div class="btn-card">
-    <button class="js-reset-score">
-        Reset Score
-    </button>
+    <div class="main-card">
+      <p class="title-card">Rock Paper Scissors</p>
+      <div>
+              <!-- onclick = "playGame('Scissors'); replaced by eventListener-->
+        <button class="move-btn js-rock-btn">
+            <img class="move-icon" src="images/rock-emoji.png">
+        </button>
+        <button class="move-btn js-paper-btn">
+            <img class="move-icon" src="images/paper-emoji.png">
+        </button>
+        <button class="move-btn js-scissor-btn">
+            <img class="move-icon" src="images/scissors-emoji.png">
+        </button>
+      </div>
+      <p class="js-result result-text"></p>
+      <p class="js-move"></p>
+      <p class="js-score"></p>
+      <div class="btn-card">
+        <button class="js-reset-score play-buttons">
+            Reset Score
+        </button>
     
-    <button class="js-autoPlay">
-        Auto Play
-      </button>
-
-    <button class="js-pause-auto-play-btn">
-        Pause auto play
-    </button>
+        <button class="js-autoPlay play-buttons">
+            Auto Play
+          </button>
+        <button class="js-pause-auto-play-btn play-buttons">
+            Pause auto play
+        </button>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>
