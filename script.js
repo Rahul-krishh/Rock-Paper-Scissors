@@ -104,7 +104,7 @@ function playGame(playerMove)
   
 
   lastResult = result;
-  lastMove = `You picked ${playerMove}&nbsp; <img class="move-result-icon" src="images/${playerMove}-emoji.png"> &nbsp;&nbsp;  Computer Picked ${computerPick} &nbsp;<img class="move-result-icon" src="images/${computerPick}-emoji.png">`;
+  lastMove = `You picked ${playerMove}&nbsp; <img class="move-result-icon" src="images/${playerMove}-emojii.png"> &nbsp;&nbsp;  Computer Picked ${computerPick} &nbsp;<img class="move-result-icon" src="images/${computerPick}-emojii.png">`;
 
   document.querySelector('.js-result').innerHTML = lastResult;
   document.querySelector('.js-move').innerHTML = lastMove;
